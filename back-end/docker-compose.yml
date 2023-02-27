@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+    app:
+        container_name: technical_test_recharges
+        image: technical_test_recharges
+        build: ./
+        ports:
+            - "8080:8080"
+        depends_on:
+            - postgresql
+    postgresql:
+        image: postgres:11.5
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_DB=technical-test-recharges-db
+
