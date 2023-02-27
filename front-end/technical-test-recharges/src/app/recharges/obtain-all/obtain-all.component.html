@@ -1,0 +1,23 @@
+{{ recharges | json }}
+<div class="container">
+    <h1 class="mat-h1">Recharges by operator</h1>
+    <div class="mat-body-1" *ngFor="let operator of rechargeService.getRechargesByOperator()">
+      <div class="mat-subheading-2">Name: {{ operator.name }}</div>
+      <div class="mat-body-2">Total recharges: {{ operator.rechargesValues }}</div>
+      <div class="mat-body-2">Quantity: {{ operator.quantity }}</div>
+      <hr>
+    </div>
+    <h1 class="mat-h1">All recharges</h1>
+    <div class="recharge-list">
+        <div *ngFor="let recharge of recharges" class="recharge-card">
+            <div class="recharge-card-header">
+                <span class="recharge-operator">{{ recharge.operator.name }}</span>
+                <span class="recharge-value">{{ recharge.value }}</span>
+            </div>
+            <div class="recharge-card-body">
+                <p class="recharge-seller">Seller: {{ recharge.seller.firstName }} {{ recharge.seller.LastName }}</p>
+                <p class="recharge-phone">cellphone: {{ recharge.cellphone }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{{data | json}}
+<div class="mat-dialog-container">
+    <h2 mat-dialog-title>Add New Recharge</h2>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <h3>Operator</h3>
+        <select matNativeControl [(ngModel)]="data.operator">
+          <option value="" disabled selected>Choose an operator</option>
+          <option *ngFor="let operator of operators" [value]="operator" selected>
+            {{operator.name}}
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <h3>Value</h3>
+        <input matInput placeholder="Value" [(ngModel)]="data.value">
+      </mat-form-field>
+      <mat-form-field>
+        <h3>Seller</h3>
+        <select matNativeControl [(ngModel)]="data.seller">
+          <option value="" disabled selected>Choose a seller</option>
+          <option *ngFor="let seller of sellers" [value]="seller" selected>
+            {{seller.firstName}} {{seller.lastName}}
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <h3>Phone</h3>
+        <input matInput placeholder="Phone" [(ngModel)]="data.phone">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button [mat-dialog-close]="data" (click)="onAddRecharge()" cdkFocusInitial>Add</button>
+    </div>
+</div>
